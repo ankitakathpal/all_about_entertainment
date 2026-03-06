@@ -60,6 +60,10 @@ app.get("/", (req, res) => {
   res.send("Backend Running");
 });
 
+app.get("/api", (req, res) => {
+  res.json({ message: "API working" });
+});
+
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
