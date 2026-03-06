@@ -60,7 +60,7 @@ const Contact = () => {
   if (Object.keys(newErrors).length > 0) return;
 
   try {
-    const res = await fetch("http://localhost:5000/api/contact", {
+    const res = await fetch("https://all-about-entertainment.onrender.com/api/contact", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(formData)

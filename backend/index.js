@@ -1,14 +1,12 @@
-
 const express = require("express");
 const cors = require("cors");
 const mysql = require("mysql2");
-const { google } = require("googleapis");
 
 const app = express();
+
 app.use(cors());
 app.use(express.json());
 
-// MySQL connection
 const db = mysql.createConnection({
   host: "localhost",
   user: "root",
@@ -24,7 +22,10 @@ db.connect(err => {
   }
 });
 
-/* CONTACT FORM */
+app.get("/", (req,res)=>{
+  res.send("Backend Running");
+});
+
 app.post("/api/contact", (req, res) => {
   const { name, email, phone, message } = req.body;
 
@@ -39,10 +40,8 @@ app.post("/api/contact", (req, res) => {
   });
 });
 
-
-/* ARTIST BOOKING FORM */
-app.post("/api/book-artist", async (req, res) => {
-  const { artistName, name, phone, eventType, eventDate,budget, message } = req.body;
+app.post("/api/book-artist", (req, res) => {
+  const { artistName, name, phone, eventType, eventDate, budget, message } = req.body;
 
   const sql = `
     INSERT INTO artist_bookings
@@ -52,32 +51,16 @@ app.post("/api/book-artist", async (req, res) => {
 
   db.query(
     sql,
-    [artistName, name, phone, eventType, eventDate,categoty, budget, message],
-    async (err) => {
+    [artistName, name, phone, eventType, eventDate, budget, message],
+    (err) => {
       if (err) return res.status(500).json(err);
-
-      try {
-        await saveToGoogleSheets({
-          artistName,
-          name,
-          phone,
-          eventType,
-          eventDate,
-          categoty,
-          budget,
-          message,
-        });
-
-        res.json({ message: "Booking saved successfully" });
-
-      } catch (sheetError) {
-        console.error("Google Sheets Error:", sheetError);
-        res.json({ message: "Saved to DB but Sheet failed" });
-      }
+      res.json({ message: "Booking saved successfully" });
     }
   );
 });
 
-app.listen(5000, () => {
-  console.log("Backend running on port 5000");
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => {
+  console.log(`Backend running on port ${PORT}`);
 });

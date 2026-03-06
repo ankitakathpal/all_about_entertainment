@@ -29,7 +29,7 @@ const BookingForm = () => {
     e.preventDefault();
 
     try {
-      const res = await fetch("http://localhost:5000/api/book-artist", {
+      const res = await fetch("https://all-about-entertainment.onrender.com/api/book-artist", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
