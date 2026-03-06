@@ -22,9 +22,6 @@ db.connect(err => {
   }
 });
 
-app.get("/", (req,res)=>{
-  res.send("Backend Running");
-});
 
 app.post("/api/contact", (req, res) => {
   const { name, email, phone, message } = req.body;
@@ -57,6 +54,10 @@ app.post("/api/book-artist", (req, res) => {
       res.json({ message: "Booking saved successfully" });
     }
   );
+});
+
+app.get("/", (req, res) => {
+  res.send("Backend Running");
 });
 
 const PORT = process.env.PORT || 5000;
