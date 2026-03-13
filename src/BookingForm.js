@@ -24,9 +24,47 @@ const BookingForm = () => {
       [e.target.name]: e.target.value,
     });
   };
+  
+const validateForm = () => {
+  const phoneRegex = /^[6-9]\d{9}$/; // Indian phone numbers
 
+  if (formData.name.trim().length < 3) {
+    alert("Name must be at least 3 characters long");
+    return false;
+  }
+
+  if (!phoneRegex.test(formData.phone)) {
+    alert("Enter a valid 10-digit phone number");
+    return false;
+  }
+
+  if (!formData.eventType) {
+    alert("Please select an event type");
+    return false;
+  }
+
+  if (formData.eventDate) {
+    const today = new Date().toISOString().split("T")[0];
+    if (formData.eventDate < today) {
+      alert("Event date cannot be in the past");
+      return false;
+    }
+  }
+
+  if (formData.message.length > 300) {
+    alert("Message should not exceed 300 characters");
+    return false;
+  }
+
+  return true;
+};
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+z
+  if (!validateForm()) {
+    return;
+  }
 
     try {
       const res = await fetch("https://all-about-entertainment.onrender.com/api/book-artist", {
@@ -34,10 +72,7 @@ const BookingForm = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-  ...formData,
-  sendToSheets: true,
-}),
+        body: JSON.stringify(formData)
       });
 
       const data = await res.json();
