@@ -8,10 +8,14 @@ app.use(cors());
 app.use(express.json());
 
 const db = mysql.createConnection({
-  host: "127.0.0.1",
-  user: "root",
-  password: "root",
-  database: "all_about"
+  host: "mysql-1d517a8a-allabout1.f.aivencloud.com",
+  port: 28159,
+  user: "avnadmin",
+  password: "AVNS_ULzjfu-Ljna-TATP4A-",
+  database: "all_about",
+  ssl: {
+    rejectUnauthorized: false
+  }
 });
 
 db.connect(err => {
@@ -60,9 +64,7 @@ app.get("/", (req, res) => {
   res.send("Backend Running");
 });
 
-app.get("/api", (req, res) => {
-  res.json({ message: "API working" });
-});
+
 
 const PORT = process.env.PORT || 5000;
 
