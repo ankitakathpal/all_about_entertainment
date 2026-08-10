@@ -69,9 +69,9 @@ const Services = () => {
           <div className="flex justify-between items-center">
             
             <div className="flex items-center space-x-6">
-              <a href="tel:+919876543210" className="flex items-center hover:text-purple-400 transition">
+              <a href="tel:+919354598380" className="flex items-center hover:text-purple-400 transition">
                 <Phone className="h-3.5 w-3.5 mr-1.5" />
-                <span className="hidden sm:inline">+91 98765 43210</span>
+                <span className="hidden sm:inline">+91 93545 98380</span>
               </a>
 
               <a href="mailto:info@allaboutentertainment.com" 

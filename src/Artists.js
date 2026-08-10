@@ -69,9 +69,9 @@ function Artists() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center">
             <div className="flex items-center space-x-6">
-              <a href="tel:+919876543210" className="flex items-center hover:text-purple-400 transition">
+              <a href="tel:+919354598380" className="flex items-center hover:text-purple-400 transition">
                 <Phone className="h-3.5 w-3.5 mr-1.5" />
-                <span className="hidden sm:inline">+91 98765 43210</span>
+                <span className="hidden sm:inline">+91 93545 98380</span>
               </a>
               <a href="mailto:info@allaboutentertainment.com" className="hidden md:flex items-center hover:text-purple-400 transition">
                 <Mail className="h-3.5 w-3.5 mr-1.5" />
@@ -169,7 +169,7 @@ function Artists() {
             <div>
               <h3 className="text-lg font-bold mb-4">Contact Info</h3>
               <ul className="space-y-2 text-gray-400">
-                <li className="flex items-center"><Phone className="h-4 w-4 mr-2" /> +91 93545 98380</li>
+                <li className="flex items-center"><Phone className="h-4 w-4 mr-2" />+91 93545 98380</li>
                 <li className="flex items-center"><Mail className="h-4 w-4 mr-2" /> info@allaboutentertainment.com</li>
                 <li className="flex items-center"><MapPin className="h-4 w-4 mr-2" /> Delhi, India</li>
               </ul>
