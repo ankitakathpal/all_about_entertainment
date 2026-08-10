@@ -61,7 +61,6 @@ const validateForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-z
   if (!validateForm()) {
     return;
   }
